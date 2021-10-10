@@ -43,23 +43,11 @@ header h1 {
     font-weight: normal;
 }
 
-.display div {
-    grid-column: 3/8;
-    grid-row: 2;
-    list-style-type: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    background-color: white;
-    border: none;
-}
 
 .days {
     grid-column: 3/8;
-    list-style-type: none;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    background-color: white;
-    border: none;
 }
 
 .history {
