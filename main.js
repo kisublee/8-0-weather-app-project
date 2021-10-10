@@ -89,3 +89,5 @@ const weatherApp = document.querySelector("form").addEventListener("submit", (ev
     event.target.reset();
 
 })
+
+//what is going on?
