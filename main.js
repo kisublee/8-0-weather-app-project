@@ -1,4 +1,5 @@
 
+
 const weatherApp = document.querySelector("form").addEventListener("submit", (event) => {
 
     event.preventDefault();
@@ -15,6 +16,8 @@ const weatherApp = document.querySelector("form").addEventListener("submit", (ev
        document.querySelector(".display").textContent = "Please enter a city or location"
        throw "error"
     } 
+
+
     fetch(basicUrl).then((response) => response.json()).then((db) => {
         
         document.querySelector(".display").innerHTML = 
@@ -26,12 +29,13 @@ const weatherApp = document.querySelector("form").addEventListener("submit", (ev
 
         const li = document.createElement("li")
         li.innerHTML =  
-        `<a href="#" value='${basicUrl} name='test'>
+        `
+        <a href="#" value='${basicUrl} name='test'>
         ${db.nearest_area[0].areaName[0].value}- 
         ${db.current_condition[0].FeelsLikeF}°F</a>`;
         
         li.addEventListener("click", (event) => {
- 
+           
             document.querySelector(".display").innerHTML = 
             `<h2><b>${input}</b></h2>
             <p><b>Area:</b> ${db.nearest_area[0].areaName[0].value}</p>
@@ -39,19 +43,17 @@ const weatherApp = document.querySelector("form").addEventListener("submit", (ev
             <p>Country:</b> ${db.nearest_area[0].country[0].value}</p>
             <p>Currently:</b> Feels Like ${db.current_condition[0].FeelsLikeF}°F</p>`
 
-            const days = ["today", "tomorrow", "dayAfterTomorrow"];
+
+            const days = ["Today", "Tomorrow", "Day After Tomorrow"];
             for (let i = 0; i < days.length; i++) {
+
+                    div[i].innerHTML = `
+                    <h3>${days[i]}</h3>
+                    <p><b>Average Temperature:</b> ${db.weather[i].avgtempF}°F</p>
+                    <p><b>Max Temperature:</b> ${db.weather[i].maxtempF}°F</p>
+                    <p><b>Min Temperature:</b> ${db.weather[i].mintempF}°F</p>`
     
-                const div = document.createElement("div")
-                div.innerHTML = `
-                <p><b>Average Temperature:</b> ${db.weather[i].avgtempF}°F</p>
-                <p><b>Max Temperature:</b> ${db.weather[i].maxtempF}°F</p>
-                <p><b>Min Temperature:</b> ${db.weather[i].mintempF}°F</p>`
-    
-                  document.querySelector(".display").append(div)  
             }
-           
- 
          })
 
         const list = document.querySelector(".history ul");
@@ -68,18 +70,19 @@ const weatherApp = document.querySelector("form").addEventListener("submit", (ev
 
         document.querySelector(".history ul p").textContent = ""
 
-        const days = ["today", "tomorrow", "dayAfterTomorrow"];
+        const days = ["Today", "Tomorrow", "Day After Tomorrow"];
+        const div = document.querySelectorAll(".days div")
+
         for (let i = 0; i < days.length; i++) {
 
-            const div = document.createElement("div")
-            div.innerHTML = `
-            <p><b>Average Temperature:</b> ${db.weather[i].avgtempF}°F</p>
-            <p><b>Max Temperature:</b> ${db.weather[i].maxtempF}°F</p>
-            <p><b>Min Temperature:</b> ${db.weather[i].mintempF}°F</p>`
-
-              document.querySelector(".display").append(div)  
+                div[i].innerHTML = `
+                <h3>${days[i]}</h3>
+                <p><b>Average Temperature:</b> ${db.weather[i].avgtempF}°F</p>
+                <p><b>Max Temperature:</b> ${db.weather[i].maxtempF}°F</p>
+                <p><b>Min Temperature:</b> ${db.weather[i].mintempF}°F</p>`
+                console.log(days[i])
+        
         }
-       
 
     }).catch(console.log)
 
