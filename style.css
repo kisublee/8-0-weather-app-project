@@ -35,7 +35,7 @@ header h1 {
     margin-left: 10px;
     margin-top: 20px;
     grid-column: 3/8;
-    text-align: center;    
+    text-align: center; 
 }
 
 .display h4 {
@@ -61,9 +61,8 @@ header h1 {
     padding: 0px 0px 0px 10px;
     font-weight:lighter;
     list-style-type: none;
+    height: 200px;
+    overflow: scroll;
 } 
 
-aside ul li {
-display: block;
-}
 
